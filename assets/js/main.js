@@ -2,12 +2,12 @@ const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
 
 const maxRecords = 151
-const limit = 10
+let limit = 10
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
+        <li class="pokemon ${pokemon.type}" onClick="getPokemon(${pokemon.number}gir)">
             <span class="number">#${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
 
@@ -37,11 +37,9 @@ loadMoreButton.addEventListener('click', () => {
     const qtdRecordsWithNexPage = offset + limit
 
     if (qtdRecordsWithNexPage >= maxRecords) {
-        const newLimit = maxRecords - offset
-        loadPokemonItens(offset, newLimit)
+        limit = maxRecords - offset
 
         loadMoreButton.parentElement.removeChild(loadMoreButton)
-    } else {
-        loadPokemonItens(offset, limit)
     }
+    loadPokemonItens(offset, limit)
 })

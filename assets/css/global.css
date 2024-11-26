@@ -22,3 +22,9 @@ body {
         border-radius: 1rem;
     }
 }
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: aquamarine;
+}
